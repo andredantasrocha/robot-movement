@@ -16,6 +16,7 @@ public class PlaceCommand implements Command {
 
     @Override
     public TableTop apply(TableTop tableTop) {
-        return null;
+        TableTop candidate = new TableTop(x, y, direction);
+        return candidate.isValid() ? candidate : tableTop;
     }
 }
