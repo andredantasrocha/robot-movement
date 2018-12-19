@@ -40,13 +40,13 @@ public class CommandParser {
                 int y = Integer.valueOf(tokens[2]);
                 Direction direction = Direction.valueOf(tokens[3]);
                 result.add(new PlaceCommand(x, y, direction));
-            } else if (instruction == "MOVE") {
+            } else if (instruction.equals("MOVE")) {
                 result.add(new MoveCommand());
-            } else if (instruction == "LEFT") {
+            } else if (instruction.equals("LEFT")) {
                 result.add(new RotateCommand("LEFT"));
-            } else if (instruction == "RIGHT") {
+            } else if (instruction.equals("RIGHT")) {
                 result.add(new RotateCommand("RIGHT"));
-            } else if (instruction == "REPORT") {
+            } else if (instruction.equals("REPORT")) {
                 result.add(new ReportCommand());
             }
         }
