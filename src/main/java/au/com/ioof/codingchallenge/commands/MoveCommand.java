@@ -7,6 +7,21 @@ public class MoveCommand implements Command {
 
     @Override
     public TableTop apply(TableTop tableTop) {
-        return null;
+        TableTop candidate = tableTop;
+        switch (tableTop.direction) {
+            case EAST:
+                candidate = new TableTop(tableTop.x + STEP, tableTop.y, tableTop.direction);
+                break;
+            case WEST:
+                candidate = new TableTop(tableTop.x - STEP, tableTop.y, tableTop.direction);
+                break;
+            case NORTH:
+                candidate = new TableTop(tableTop.x, tableTop.y + STEP, tableTop.direction);
+                break;
+            case SOUTH:
+                candidate = new TableTop(tableTop.x, tableTop.y - STEP, tableTop.direction);
+                break;
+        }
+        return candidate.isValid() ? candidate : tableTop;
     }
 }
