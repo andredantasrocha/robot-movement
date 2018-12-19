@@ -1,5 +1,7 @@
 package au.com.ioof.codingchallenge;
 
+import au.com.ioof.codingchallenge.commands.Command;
+
 public class RobotMovement {
     private final TableTop tableTop;
 
