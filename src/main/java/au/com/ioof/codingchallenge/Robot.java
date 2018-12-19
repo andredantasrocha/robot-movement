@@ -15,14 +15,15 @@ public class Robot {
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.println("A file with commands must be provided");
+            System.exit(1);
         }
 
-        String[] instructions = read(args[0]);
+        String[] instructions = readCommandsFromFile(args[0]);
         Command[] commands = new CommandParser().parse(instructions);
         new Robot(new TableTop()).run(commands);
     }
 
-    private static String[] read(String commandsFile) {
+    private static String[] readCommandsFromFile(String commandsFile) {
         List<String> lines = new ArrayList<>();
 
         try (Scanner s = new Scanner(new FileReader(commandsFile))) {
@@ -41,7 +42,7 @@ public class Robot {
     }
 
     public void run(Command[] commands) {
-        for(Command command: commands) {
+        for (Command command : commands) {
             this.tableTop = command.apply(this.tableTop);
         }
     }
